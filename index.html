@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chick-fil-A BOH Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <h1>Chick-fil-A BOH Quality Dashboard</h1>
+    <div class="tabs">
+        <button class="tab-link active" onclick="openTab('tab1')">Nuggets Breader</button>
+        <button class="tab-link" onclick="openTab('tab2')">Nuggets Assembler</button>
+        <button class="tab-link" onclick="openTab('tab3')">Waffle Fries Assembler</button>
+        <button class="tab-link" onclick="openTab('tab4')">Grilled Assembler</button>
+        <button class="tab-link" onclick="openTab('tab5')">Grilled Breader</button>
+        <button class="tab-link" onclick="openTab('tab6')">CFA Buns</button>
+        <button class="tab-link" onclick="openTab('tab7')">Grilled Buns</button>
+        <button class="tab-link" onclick="openTab('tab8')">CFA Assembler</button>
+        <button class="tab-link" onclick="openTab('tab9')">CFA Breader</button>
+    </div>
+
+    <div id="tab1" class="tab-content active">
+        <h2>Nuggets Breader</h2>
+        <table id="table1"></table>
+        <canvas id="chart1"></canvas>
+    </div>
+    <div id="tab2" class="tab-content">
+        <h2>Nuggets Assembler</h2>
+        <table id="table2"></table>
+    </div>
+    <div id="tab3" class="tab-content">
+        <h2>Waffle Fries Assembler</h2>
+        <table id="table3"></table>
+        <canvas id="chart3"></canvas>
+    </div>
+    <div id="tab4" class="tab-content">
+        <h2>Grilled Assembler</h2>
+        <table id="table4"></table>
+    </div>
+    <div id="tab5" class="tab-content">
+        <h2>Grilled Breader</h2>
+        <table id="table5"></table>
+        <canvas id="chart5"></canvas>
+    </div>
+    <div id="tab6" class="tab-content">
+        <h2>CFA Buns</h2>
+        <table id="table6"></table>
+    </div>
+    <div id="tab7" class="tab-content">
+        <h2>Grilled Buns</h2>
+        <table id="table7"></table>
+        <canvas id="chart7"></canvas>
+    </div>
+    <div id="tab8" class="tab-content">
+        <h2>CFA Assembler</h2>
+        <table id="table8"></table>
+    </div>
+    <div id="tab9" class="tab-content">
+        <h2>CFA Breader</h2>
+        <table id="table9"></table>
+    </div>
+
+    <h2>Summary</h2>
+    <canvas id="summaryChart"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
