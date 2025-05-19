@@ -1,7 +1,7 @@
 // Google Sheets API configuration
 const SHEET_ID = '1fK6-itRBNb_6R8C4GiJ2_EbMrYWFsjR_Sc3z7zPFePI';
 const API_KEY = 'AIzaSyD11ci9BCpFABOp09iNT6G_0sw6cmMKx3k';
-const SHEET_NAME = 'Form Responses 1'; // UPDATE if tab name differs
+const SHEET_NAME = 'Form Responses 1'; // Confirmed correct
 const BASE_URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(SHEET_NAME)}!A1:BI1000?key=${API_KEY}`;
 
 // Assessment types and their display columns
@@ -181,7 +181,7 @@ async function loadTabData(tabId) {
             const scores = {};
             filteredRows.forEach(row => {
                 const name = row['Name of employee being graded'];
-                const score = parseFloat(row['Score']) || 0; // Include zeroes for selected section
+                const score = parseFloat(row['Score']) || 0; // Include zeroes
                 if (name) {
                     if (!scores[name]) scores[name] = { total: 0, count: 0 };
                     scores[name].total += score;
@@ -200,20 +200,15 @@ async function loadTabData(tabId) {
                         datasets: [{
                             label: 'Average Test Score',
                             data: avgScores,
-                            backgroundColor: 'rgba(0, 123, 255,retien
+                            backgroundColor: 'rgba(0, 123, 255, 0.6)',
                             borderColor: 'rgba(0, 123, 255, 1)',
                             borderWidth: 1
                         }]
                     },
                     options: {
                         scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: { display: true, text: 'Average Score' }
-                            },
-                            x: {
-                                title: { display: true, text: 'Employee' }
-                            }
+                            y: { beginAtZero: true, title: { display: true, text: 'Average Score' } },
+                            x: { title: { display: true, text: 'Employee' } }
                         },
                         plugins: {
                             title: { display: true, text: `${assessmentTypes[tabId].name} Scores` },
@@ -260,7 +255,7 @@ async function loadSummaryData() {
             let completedEntries = 0;
 
             filteredRows.forEach(row => {
-                const score = parseFloat(row['Score']) || 0; // Include zeroes for selected section
+                const score = parseFloat(row['Score']) || 0; // Include zeroes
                 if (row['Score'] !== '') {
                     totalScore += score;
                     scoreCount += 1;
@@ -303,20 +298,9 @@ async function loadSummaryData() {
             },
             options: {
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: { display: true, text: 'Average Score' },
-                        position: 'left'
-                    },
-                    y1: {
-                        beginAtZero: true,
-                        title: { display: true, text: 'Completion (%)' },
-                        position: 'right',
-                        grid: { drawOnChartArea: false }
-                    },
-                    x: {
-                        title: { display: true, text: 'Assessment Type' }
-                    }
+                    y: { beginAtZero: true, title: { display: true, text: 'Average Score' }, position: 'left' },
+                    y1: { beginAtZero: true, title: { display: true, text: 'Completion (%)' }, position: 'right', grid: { drawOnChartArea: false } },
+                    x: { title: { display: true, text: 'Assessment Type' } }
                 },
                 plugins: {
                     title: { display: true, text: 'Summary: Test Scores and Completion Status' },
